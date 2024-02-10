@@ -1,1 +1,1 @@
-# RFE BSU organization of data_processing labs
+# RFE BSU organization of data processing labs
