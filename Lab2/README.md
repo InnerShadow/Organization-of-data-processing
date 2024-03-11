@@ -23,16 +23,18 @@
 
 ### Logistic Regression Training
 
-1. Logistic regression with L2 regularization was trained, yielding an F1-score of 0.95, intresting... Metrics such as precision, recall, and accuracy were also computed.
+1. Logistic regression with L2 regularization was trained, yielding an F1-score of 0.95, look like overfitting. Metrics such as precision, recall, and accuracy were also computed.
 2. A confusion matrix was constructed.
 3. ROC curves were plotted, and the ROC-AUC metric was calculated.
 4. A second logistic regression model with L1 regularization was trained, showing similar results.
+5. Try random forest on this tusk, less overfitting, but still not ok.
    
 ### Results
 | Model # | F1-score | precision | recall | accuracy | ROC-AUC |
 |:-:|:-:|:-:|:-:|:-:|:-:|
 | 1 | 0.95 | 0.95 | 0.95 | 0.95 | 0.9875 |
 | 2 | 0.95 | 0.95 | 0.95 | 0.95 | 0.9880 |
+| 3 | 0.94 | 0.94 | 0.94 | 0.94 | ------ |
 
 
 ### Data Preprocessing & NLP for Neural Network Model with LSTM Layer
