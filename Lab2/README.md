@@ -23,7 +23,7 @@
 
 ### Logistic Regression Training
 
-1. Logistic regression with L2 regularization was trained, yielding an F1-score of 0.95, indicating potential overfitting. Metrics such as precision, recall, and accuracy were also computed.
+1. Logistic regression with L2 regularization was trained, yielding an F1-score of 0.95, intresting... Metrics such as precision, recall, and accuracy were also computed.
 2. A confusion matrix was constructed.
 3. ROC curves were plotted, and the ROC-AUC metric was calculated.
 4. A second logistic regression model with L1 regularization was trained, showing similar results.
