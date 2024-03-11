@@ -27,7 +27,7 @@
 2. A confusion matrix was constructed.
 3. ROC curves were plotted, and the ROC-AUC metric was calculated.
 4. A second logistic regression model with L1 regularization was trained, showing similar results.
-5. Try random forest on this tusk, less overfitting, but still not ok.
+5. Try random forest on this task, less overfitting, but still not ok.
    
 ### Results
 | Model # | F1-score | precision | recall | accuracy | ROC-AUC |
