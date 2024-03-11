@@ -12,7 +12,7 @@
 2. In the dataset, 313 exact duplicates were identified and subsequently removed. The text was then converted to lowercase. Analyzing a specific row revealed that all messages start with the construction "subject:," so using regular expressions, the subject was extracted into a separate column and removed from the Body.
 3. Three features were created: the number of characters, words, and sentences in the Body.
 4. Based on this data, boxplots and a correlation matrix were generated. Outliers based on the number of sentences (approximately 3k rows) were removed, and a correlation matrix for the dataset without outliers was constructed. The correlations improved, leading to the decision to completely remove outliers. It's worth noting that in this dataset, correlations between different parameters of message length and the target variable are very small.
-5. Punctuation and non-Latin alphabet symbols were removed from the textual data.
+5. Punctuation and non-ASCII alphabet symbols were removed from the textual data.
 6. Stop words were removed from the textual data, and stemming was applied to generalize words present in the text.
 7. Word Clouds were generated for spam and non-spam messages.
 8. Since the task involves classification, it was decided to extract topics from the text, specifically 16 topics using the LDA method.
