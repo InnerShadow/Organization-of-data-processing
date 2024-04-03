@@ -1,5 +1,5 @@
 # Lab3_5
-## Get dataset of Power Consumption. Choose one zone and create forecasting model to predict future pawer Consumption. Use both statistics models and deep learning.
+## Get dataset of Power Consumption. Choose one zone and create forecasting model to predict future power Consumption. Use both statistics models and deep learning methods.
 
 ### [**Code**](/Lab3_5/lab3_5.ipynb)
 
