@@ -1,5 +1,5 @@
 # Lab3
-## The dataset contains data on sales of 5 different products and air temperature on those days. The frequency of observations for different products does not coincide.
+## The dataset contains data on sales of 5 different products and air temperature on those days. The frequency of observations for different products does not coincide. Choose one time serie, create forecasting model, including statistics models & LSTM model.
 
 ### [**Code**](/Lab3/Lab3.ipynb)
 
