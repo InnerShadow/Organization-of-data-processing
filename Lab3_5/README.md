@@ -1,5 +1,5 @@
 # Lab3_5
-## Get dataset of power Power Consumption. Choose one zone and create forecasting model to predict future pawer Consumption. Use both statistics models and deep learning.
+## Get dataset of Power Consumption. Choose one zone and create forecasting model to predict future pawer Consumption. Use both statistics models and deep learning.
 
 ### [**Code**](/Lab3_5/lab3_5.ipynb)
 
@@ -11,8 +11,8 @@
 2. A time series plot was created.
 3. The forecasting horizon was chosen based on the testing set.
 4. Metrics including MAE, medAE, MSE, MSLE, and MAPE were collected for each model.
-5. A naive forecast was made using the last strategy. The results were not very good.
-6. A model for naive forecasting was built using the mean strategy for the last 30 observations.
+5. A naive forecast was made using the strategy - last. The results were not very good.
+6. A model for naive forecasting was built using the strategy - mean for the last 30 observations.
 7. A forecast was made using exponential smoothing.
 8. The presence of a trend was explicitly specified in the exponential smoothing method.
 9. The coefficient auto-tuning method was applied to the exponential smoothing model.
