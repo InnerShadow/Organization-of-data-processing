@@ -36,7 +36,8 @@ def grabData() -> pd.DataFrame:
 if __name__ == '__main__':
     df = grabData()
     df.plot()
-    plt.imsave("OriginalDataSet.png")
+    plt.savefig("OriginalDataSet.png")
+    plt.close()
 
     scaler = MinMaxScaler(feature_range = (0, 1))
     data = scaler.fit_transform(df.values.reshape(-1, 1))
@@ -98,7 +99,8 @@ if __name__ == '__main__':
     plt.xlabel('Epoch')
     plt.ylabel('Loss')
     plt.legend()
-    plt.imsave("lossModelPlot.png")
+    plt.savefig("lossModelPlot.png")
+    plt.close()
 
     predicted_values = model.predict([X_test, X_test_rev])
     predicted_values = scaler.inverse_transform(predicted_values)
@@ -119,12 +121,14 @@ if __name__ == '__main__':
     plt.xlabel('Date')
     plt.ylabel('USD')
     plt.legend()
-    plt.imsave("PlotOfPredictedValues.png")
+    plt.savefig("PlotOfPredictedValues.png")
+    plt.close()
 
     plt.plot(np.arange(3.10, 3.3, 0.01), np.arange(3.10, 3.3, 0.01), c = 'red', alpha = 0.5)
     plt.scatter(y_test, predicted_values, 
                 c = np.abs(y_test - predicted_values), cmap = 'viridis')
     plt.xlabel("Real")
     plt.ylabel("Predicted")
-    plt.imsave("ScatterResidualsPlot.png")
+    plt.savefig("ScatterResidualsPlot.png")
+    plt.close()
 

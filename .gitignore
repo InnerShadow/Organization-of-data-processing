@@ -1,3 +1,5 @@
 *.csv
 *.txt
 *.h5
+USDpredict/MlflowRuns
+USDpredict/TensorboardDir
