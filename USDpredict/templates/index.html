@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        .image-container {
+            display: inline-block;
+            margin: 10px;
+            position: relative;     
+        }
+        .image-container img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .image-container img:hover {
+            opacity: 0.7;
+        }
+        .image-name {
+            position: absolute; 
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px; 
+            margin: 0;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+        #drop-area {
+            width: 300px;
+            height: 200px;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
+            margin: 20px auto;
+        }
+        #predict-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="drop-area" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
+        Drop file of BY-USD from (https://www.nbrb.by/statistics/rates/ratesdaily) here.
+    </div>
+
+    {% for image in images %}
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='images/' + image) }}" onclick="openModal('{{ image }}')" alt="{{ image }}">
+        <p class="image-name">{{ image.split('.')[0] }}</p>
+    </div>
+    {% endfor %}
+
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
+        <p id="image-name"></p>
+    </div>
+
+    <div id="predict-button">
+        <form id="predict-form">
+            <input type="text" id="input-field" name="input_field_name" placeholder="Num days">
+            <button type="button" onclick="triggerFunction()">Predict</button>
+        </form>
+    </div>
+
+    <div id="predictions-list" style="white-space: nowrap;"></div>
+
+    <script>
+        function triggerFunction() {
+            var inputValue = document.getElementById("input-field").value;
+            
+            fetch('/run_function', {
+                method: 'POST',
+                body: new FormData(document.getElementById("predict-form"))
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log('run predict:', result);
+                displayPredictions(result);
+            })
+            .catch(error => {
+                console.error('Cannot predict!:', error);
+            });
+        }
+
+        function displayPredictions(predictions) {
+            var predictionsList = document.getElementById("predictions-list");
+            predictionsList.innerHTML = "<h3>Predictions:</h3><p>";
+
+            predictions = predictions.map(function(prediction) {
+                return prediction.toFixed(3);
+            });
+
+            for (var i = 0; i < predictions.length; i++) {
+                if (i > 0 && i % 10 === 0) {
+                    predictionsList.innerHTML += "<br>";
+                }
+                predictionsList.innerHTML += predictions[i];
+                if (i % 10 !== 9 && i !== predictions.length - 1) {
+                    predictionsList.innerHTML += ", ";
+                }
+            }
+            predictionsList.innerHTML += "</p>";
+
+            var img = document.createElement('img');
+            var timestamp = new Date().getTime();
+            img.src = '/static/generated/Predictions.png?' + timestamp;
+            predictionsList.appendChild(img);
+        }
+
+
+        function dragOverHandler(event) {
+            event.preventDefault();
+        }
+
+        function dropHandler(event) {
+            event.preventDefault();
+            var files = event.dataTransfer.files;
+            for (var i = 0; i < files.length; i++) {
+                uploadFile(files[i]);
+            }
+        }
+
+        function uploadFile(file) {
+            var formData = new FormData();
+            formData.append('file', file);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+                console.log('File uploaded successfully:', result);
+                document.getElementById('drop-area').innerText = file.name;
+            })
+            .catch(error => {
+                console.error('Error uploading file:', error);
+            });
+        }
+
+        function openModal(imageName) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("image-name");
+
+            modal.style.display = "block";
+            modalImg.src = "/static/images/" + imageName;
+            captionText.innerHTML = imageName.split('.')[0];
+            
+            document.addEventListener('keydown', function(event) {
+                if (event.key === "Escape") {
+                    closeModal();
+                }
+            });
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

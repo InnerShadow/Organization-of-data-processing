@@ -1,5 +1,7 @@
 *.csv
 *.txt
 *.h5
+*.pkl
 USDpredict/MlflowRuns
 USDpredict/TensorboardDir
+USDpredict/static/uploads/*.xls

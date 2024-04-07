@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+import joblib
 import mlflow
 import mlflow.keras
 
@@ -36,7 +36,7 @@ def grabData() -> pd.DataFrame:
 if __name__ == '__main__':
     df = grabData()
     df.plot()
-    plt.savefig("OriginalDataSet.png")
+    plt.savefig("static/images/OriginalDataSet.png")
     plt.close()
 
     scaler = MinMaxScaler(feature_range = (0, 1))
@@ -99,7 +99,7 @@ if __name__ == '__main__':
     plt.xlabel('Epoch')
     plt.ylabel('Loss')
     plt.legend()
-    plt.savefig("lossModelPlot.png")
+    plt.savefig("static/images/lossModelPlot.png")
     plt.close()
 
     predicted_values = model.predict([X_test, X_test_rev])
@@ -114,6 +114,7 @@ if __name__ == '__main__':
     mlflow.keras.log_model(model, "USDpredictions")
     mlflow.end_run()
     model.save("./Model.h5")
+    joblib.dump(scaler, "./Scaler.pkl")
 
     plt.plot(df.index[ : -len(y_test)], df.iloc[ : -len(y_test)], label = 'Train')
     plt.plot(df.index[-len(y_test) : ], df.iloc[-len(y_test) : ], label = 'Test')
@@ -121,7 +122,7 @@ if __name__ == '__main__':
     plt.xlabel('Date')
     plt.ylabel('USD')
     plt.legend()
-    plt.savefig("PlotOfPredictedValues.png")
+    plt.savefig("static/images/PlotOfPredictedValues.png")
     plt.close()
 
     plt.plot(np.arange(3.10, 3.3, 0.01), np.arange(3.10, 3.3, 0.01), c = 'red', alpha = 0.5)
@@ -129,6 +130,6 @@ if __name__ == '__main__':
                 c = np.abs(y_test - predicted_values), cmap = 'viridis')
     plt.xlabel("Real")
     plt.ylabel("Predicted")
-    plt.savefig("ScatterResidualsPlot.png")
+    plt.savefig("static/images/ScatterResidualsPlot.png")
     plt.close()
 
