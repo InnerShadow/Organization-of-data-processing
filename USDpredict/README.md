@@ -53,7 +53,7 @@ python3 predict.py
 | 3 | Naive(sp=7) | 0.03549 |
 | 4 | Naive(sp=30) | 0.01793 |
 | 5 | ETS | 0.03734 |
-| 6 | ETS(trean) | 0.01820 |
+| 6 | ETS(trend) | 0.01820 |
 | 7 | AutoETS | 0.03829 |
 | 8 | ARIMA(1, 1, 3) | - |
 | 9 | LSTM | 0.00399 |
