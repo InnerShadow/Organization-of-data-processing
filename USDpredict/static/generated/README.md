@@ -1,1 +1,1 @@
-This is folder for generated images of USD predictions.
+# This is folder for generated images of USD predictions.
