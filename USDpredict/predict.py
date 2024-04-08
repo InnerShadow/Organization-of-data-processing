@@ -34,22 +34,10 @@ def upload_file():
 
 @app.route('/run_function', methods=['POST'])
 def run_function():
-    delete_images()
     input_value = request.form['input_field_name']
     result = predict(int(input_value))
     result = [float(pred) for pred in result]
     return jsonify(result)
-
-
-def delete_images():
-    folder = 'static/generated'
-    for filename in os.listdir(folder):
-        file_path = os.path.join(folder, filename)
-        try:
-            if os.path.isfile(file_path):
-                os.unlink(file_path)
-        except Exception as e:
-            print(f"Failed to delete {file_path}. Reason: {e}")
 
 
 def predict(input_value : int):
