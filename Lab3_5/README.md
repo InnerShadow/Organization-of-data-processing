@@ -25,4 +25,5 @@
 16. A simple LSTM model was created to predict the next value.
 17. A GRU model with the same architecture was created.
 18. A model with two inputs - direct and inverted - for the GRU model was created.
-19. The performance of each model was displayed, and the training graph was created.
+19. A model with three inputs - direct, inverted for the GRU layers and one to attentions with LSTM layers was created.
+20. The performance of each model was displayed, and the training graph was created.
