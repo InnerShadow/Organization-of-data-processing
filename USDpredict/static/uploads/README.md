@@ -1,1 +1,1 @@
-# This is folser for uploaded .xls files.
+# This is folder for uploaded .xls files.
