@@ -5,3 +5,7 @@
 USDpredict/MlflowRuns
 USDpredict/TensorboardDir
 USDpredict/static/uploads/*.xls
+*.h5
+*.jpeg
+mini_speech_commands/*
+*.wav
