@@ -9,3 +9,4 @@ USDpredict/static/uploads/*.xls
 *.jpeg
 mini_speech_commands/*
 *.wav
+*.data
