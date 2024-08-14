@@ -10,3 +10,4 @@ USDpredict/static/uploads/*.xls
 mini_speech_commands/*
 *.wav
 *.data
+./Voice-detection/mini_speech_commands

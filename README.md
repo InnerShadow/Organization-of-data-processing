@@ -5,3 +5,7 @@
 ## 3. [**Lab3**](/Lab3/) The dataset contains data on sales of 5 different products and air temperature on those days. The frequency of observations for different products does not coincide. Choose one time serie, create forecasting model, including statistics models & LSTM model.
 ## 4. [**Lab3_5**](/Lab3_5/) Get dataset of Power Consumption. Choose one zone and create forecasting model to predict future power Consumption. Use bouth statistics models and deep learning methods.
 ## 5. [**USDpredict**](/USDpredict/) Task: Predicting the future exchange rate of the Belarusian ruble against the dollar. There were 13 models created including statistics models & Deep Learning models. Model fitting present in .ipynb file. To train you're own model *train.py* was created. To test is *predict.py* model was created. The last one will use model from *train.py* and National Bank of the Republic of Belarus data to predict future USD cost. *predict.py* use Flask as GUI. 
+## 6. [**Lab4**](/Lab4/) Task: Create and train a convolutional Siamese neural network to verify the authenticity of an arbitrary handwritten signature.
+## 7. [**Lab5**](/Lab5/) Task: Create a recommendation system to recommend movies.
+## 8. [**Voice-detection**](/Voice-detection/) Task: Create and train a convolutional neural network to predict human speech commands.
+## 9. [**Pokemon Clustering**](/Clustering/) Task: Apply Kohonen layers to cluster pokemons.
